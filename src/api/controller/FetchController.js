@@ -16,7 +16,18 @@ exports.GetBestCampaign = async (req, res) => {
 };
 
 exports.CreateCampaign = async (req, res) => {
-  const data = await Campaign.create(req.body);
-
-  return res.json(data);
+  try {
+    const data = await Campaign.create({
+      country: req.body.country,
+      name: req.body.name,
+      conversion: req.body.conversion,
+      bid: {
+        currency: req.body.currency,
+        cost: req.body.bid,
+      },
+    });
+    return res.json(data);
+  } catch (err) {
+    return res.status(400).json(err);
+  }
 };
