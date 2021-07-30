@@ -24,6 +24,7 @@ const CampaignTable = () => {
         <tr>
           <th>Campaign Name</th>
           <th>Bid</th>
+          <th>Conversion Type</th>
           <th>Targeting</th>
         </tr>
       </thead>
@@ -34,6 +35,7 @@ const CampaignTable = () => {
             <td>
               {campaign.bid[0].cost} {campaign.bid[0].currency}
             </td>
+            <td>{campaign.conversion}</td>
             <td>
               {campaign.country ? (
                 <img
