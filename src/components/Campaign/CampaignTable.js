@@ -16,7 +16,7 @@ const CampaignTable = () => {
 
   useEffect(() => {
     fetchCampaigns();
-  }, []); //TODO: UPDATE WHEN CREATING NEW CAMPAIGN
+  }, [data]);
 
   return (
     <table class="table is-fullwidth">
