@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CreateCampaignForm from "../form/CreateCampaignForm.js";
+import CampaignTable from "../Campaign/CampaignTable";
 
 const Dashboard = () => {
   const [isCreating, setIsCreating] = useState(false);
@@ -13,8 +14,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mt-5 is-fullheight">
-      <div className="columns box is-flex is-align-content-stretch	is-align-items-stretch	">
+    <div className="container mt-5 box">
+      <div className="columns">
         <div className="column is-full">
           <h1 className="title">Dashboard</h1>
 
@@ -25,6 +26,11 @@ const Dashboard = () => {
               Create Campaign
             </button>
           )}
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column is-full">
+          <CampaignTable />
         </div>
       </div>
     </div>

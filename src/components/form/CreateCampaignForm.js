@@ -73,6 +73,7 @@ const CreateCampaignForm = (props) => {
               <input
                 className="input"
                 type="number"
+                step="0.01"
                 name="bid"
                 onChange={(e) => {
                   handleChange(e);
