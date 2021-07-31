@@ -5,11 +5,7 @@ import CountrySelect from "../form/CountrySelect";
 import CurrencySelect from "../form/CurrencySelect";
 import Button from "./../form/Button";
 
-import {
-  faSignature,
-  faFilter,
-  faGavel,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSignature, faGavel } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CreateCampaignForm = (props) => {
