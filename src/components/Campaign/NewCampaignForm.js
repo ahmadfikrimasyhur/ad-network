@@ -252,9 +252,6 @@ const CreateCampaignForm = (props) => {
 
         <div className="flex space-x-2">
           <Button type="submit">Create</Button>
-          <Button type="button" inverted={true} onClick={props.close}>
-            Close
-          </Button>
         </div>
       </form>
     </div>
