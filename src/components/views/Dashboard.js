@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import CreateCampaignForm from "../form/CreateCampaignForm.js";
+import CampaignCreationModal from "../Campaign/CampaignCreationModal";
+import Button from "../form/Button.js";
 import CampaignTable from "../Campaign/CampaignTable";
+import { Transition, Dialog } from "@headlessui/react";
 
 const Dashboard = () => {
   const [isCreating, setIsCreating] = useState(false);
@@ -14,26 +16,25 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mt-5 box">
-      <div className="columns">
-        <div className="column is-full">
-          <h1 className="title">Dashboard</h1>
-
-          {isCreating ? (
-            <CreateCampaignForm close={closeCampaignForm} />
-          ) : (
-            <button className="button is-info" onClick={openCampaignForm}>
+    <section className="w-full bg-blue-500">
+      <div className="container mx-auto flex justify-center	align-center items-center flex-col">
+        <div className="flex-1 m-10 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5">
+          <div className="flex justify-between">
+            <h1 className="font-bold text-3xl text-gray-800">Dashboard</h1>
+            <Button onClick={openCampaignForm} disabled={isCreating}>
               Create Campaign
-            </button>
-          )}
+            </Button>
+          </div>
+          <CampaignCreationModal
+            show={isCreating}
+            onClose={closeCampaignForm}
+          />
+          <div>
+            <CampaignTable />
+          </div>
         </div>
       </div>
-      <div className="columns">
-        <div className="column is-full">
-          <CampaignTable />
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

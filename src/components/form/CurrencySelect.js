@@ -26,18 +26,22 @@ const CurrencySelect = (props) => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="select">
-          <select defaultValue="" name={props.name} onChange={props.onChange}>
-            <option disabled={true} value="">
-              Choose your bid currency
+        <select
+          defaultValue="default"
+          name={props.name}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          className={`className="w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md ${props.className}`}
+        >
+          <option disabled={true} value="default">
+            Choose your bid currency
+          </option>
+          {currencies.map((currency) => (
+            <option key={currency.cc} value={currency.cc}>
+              {currency.cc} - {currency.name}
             </option>
-            {currencies.map((currency) => (
-              <option key={currency.cc} value={currency.cc}>
-                {currency.cc} - {currency.name}
-              </option>
-            ))}
-          </select>
-        </div>
+          ))}
+        </select>
       )}
     </div>
   );
