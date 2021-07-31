@@ -2,11 +2,15 @@ import Form from "../form/Form";
 
 const Home = () => {
   return (
-    <section className="hero section is-fullheight is-info">
-      <div className="container is-flex is-justify-content-center	is-align-content-center	is-align-items-center	is-flex-direction-column is-fullheight">
-        <h1 className="title has-text-centered">Welcome to the Ad Network!</h1>
-        <p className="subtitle has-text-centered">Please, login or signup.</p>
-        <div className="box">
+    <section className="w-full bg-blue-500">
+      <div className="container mx-auto flex justify-center	align-center items-center flex-col h-screen">
+        <div className="flex flex-col justify-center space-y-5">
+          <h1 className="text-3xl font-bold text-white drop-shadow-sm	">
+            Welcome to the Ad Network!
+          </h1>
+          <p className="text-xl text-white text-center">
+            Please, login or signup.
+          </p>
           <Form />
         </div>
       </div>
