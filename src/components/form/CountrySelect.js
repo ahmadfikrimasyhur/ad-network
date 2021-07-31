@@ -27,8 +27,14 @@ const CountrySelect = (props) => {
         <p>Loading...</p>
       ) : (
         <div className="select">
-          <select defaultValue="" name={props.name} onChange={props.onChange}>
-            <option disabled={true} value="">
+          <select
+            defaultValue="default"
+            name={props.name}
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+            className={`className="w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md ${props.className}`}
+          >
+            <option disabled={true} value="default">
               Choose your target country
             </option>
             {countries.map((country) => (
