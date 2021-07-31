@@ -1,76 +1,118 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import Button from "./Button";
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Form = () => {
   let history = useHistory();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
 
-  const [errors, setError] = useState("");
+  const [errors, setErrors] = useState({ email: "", password: "" });
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setData((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError([]);
+    setErrors({});
 
-    if (!email || !password) {
-      setError("Erro: email ou senha inválidos");
-      return;
+    if (!data.email) {
+      setErrors((prevState) => ({
+        ...prevState,
+        email: "Empty e-mail!",
+      }));
+    } else if (!data.email.includes("@")) {
+      setErrors((prevState) => ({
+        ...prevState,
+        email: "Invalid e-mail!",
+      }));
     }
 
-    history.push("/dashboard");
+    if (!data.password) {
+      setErrors((prevState) => ({
+        ...prevState,
+        password: "Empty password!",
+      }));
+    }
+
+    /* history.push("/dashboard"); */
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <div className="field">
-        <label className="label">E-mail</label>
-        <div className="control">
-          <input
-            className={`input ${errors && "is-danger"}`}
-            type="email"
-            placeholder="mymail@mail.com"
-            onChange={(e) => {
-              handleEmail(e);
-            }}
-          />
+    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md">
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+        className="space-y-4"
+      >
+        <div>
+          <label className="font-semibold text-gray-800">E-mail</label>
+          <div className="control space-y-2">
+            <div
+              className={`relative text-gray-400 ${
+                errors.email && "text-red-500"
+              } focus-within:text-blue-500`}
+            >
+              <FontAwesomeIcon
+                className="absolute top-3 left-3"
+                icon={faEnvelope}
+              />
+              <input
+                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md pl-9 ${
+                  errors.email && "ring-1 ring-red-500"
+                }`}
+                placeholder="mymail@mail.com"
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                type="text"
+                name="email"
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-500 text-xs">{errors.email}</p>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="field">
-        <label className="label">Password</label>
-        <div className="control">
-          <input
-            className={`input ${errors && "is-danger"}`}
-            type="password"
-            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-            onChange={(e) => {
-              handlePassword(e);
-            }}
-          />
+        <div>
+          <label className="font-semibold text-gray-800">Password</label>
+          <div className="control  space-y-2">
+            <div
+              className={`relative text-gray-400 ${
+                errors.password && "text-red-500"
+              } focus-within:text-blue-500`}
+            >
+              <FontAwesomeIcon className="absolute top-3 left-3" icon={faKey} />
+              <input
+                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md pl-9 ${
+                  errors.password && "ring-1 ring-red-500"
+                }`}
+                type="password"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                name="password"
+              />
+            </div>
+            {errors.password && (
+              <p className="text-red-500 text-xs">{errors.password}</p>
+            )}
+          </div>
         </div>
-        {errors && <p className="has-text-danger is-size-7">{errors}</p>}
-      </div>
-      <div class="field is-grouped is-flex">
-        <div className="control">
-          <button className="button is-info">Login</button>
+        <div className="flex space-x-2 mt-5">
+          <Button>Login</Button>
+          <Button inverted={true}>Sign up</Button>
         </div>
-        <div className="control">
-          <button className="button is-light">Sign up</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
