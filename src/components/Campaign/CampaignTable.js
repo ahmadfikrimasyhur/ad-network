@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { AuthenticationHeader } from "../../services/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import Button from "../form/Button";
 
 const CampaignTable = () => {
   const currUser = JSON.parse(localStorage.getItem("user"));
@@ -30,15 +33,18 @@ const CampaignTable = () => {
     <table className="table-fixed shadow-lg bg-gray-50 w-full text-gray-800">
       <thead>
         <tr>
-          <th className="w-4/6 bg-blue-200 border text-left px-8 py-2">
+          <th className="w-3/6 bg-blue-200 border text-left px-8 py-2">
             Campaign Name
           </th>
           <th className="w-1/8 bg-blue-200 border text-left px-8 py-2">Bid</th>
-          <th className="w-1/8 bg-blue-200 border text-left px-8 py-2">
+          <th className="w-1/8 bg-blue-200 border text-center px-8 py-2">
             Conversion Type
           </th>
           <th className="w-1/8 bg-blue-200 border text-left px-8 py-4">
             Targeting
+          </th>
+          <th className="w-1/8 bg-blue-200 border text-left px-8 py-4">
+            Actions
           </th>
         </tr>
       </thead>
@@ -60,6 +66,11 @@ const CampaignTable = () => {
               ) : (
                 `World-wide`
               )}
+            </td>
+            <td className="border px-8 py-3">
+              <Button>
+                <FontAwesomeIcon icon={faPen} />
+              </Button>
             </td>
           </tr>
         ))}

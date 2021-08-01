@@ -52,7 +52,10 @@ const Form = () => {
       if (login.auth) {
         history.push("/dashboard");
       } else {
-        console.log(login.response.data.message);
+        setErrors((prevState) => ({
+          ...prevState,
+          validation: login.response.data.message,
+        }));
       }
     } catch (err) {
       console.log(err);
@@ -60,7 +63,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md">
+    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5">
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -128,6 +131,12 @@ const Form = () => {
           <Button inverted={true}>Sign up</Button>
         </div>
       </form>
+
+      {errors.validation && (
+        <div className="text-red-500 text-sm font-bold text-center">
+          {errors.validation}
+        </div>
+      )}
     </div>
   );
 };
