@@ -55,7 +55,7 @@ const CreateCampaignForm = (props) => {
           setError((prevState) => ({ ...prevState, conversion: undefined }));
         }
         break;
-      case "bid":
+      case "cost":
         if (!value) {
           setError((prevState) => ({
             ...prevState,

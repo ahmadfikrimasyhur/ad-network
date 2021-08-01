@@ -5,7 +5,7 @@ const secret = process.env.SECRET;
 exports.Login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email: email, password: password });
+    const user = await User.findOne({ email: email });
 
     if (!user) {
       return res.status(404).send({ auth: false, message: "User not found!" });
@@ -13,7 +13,7 @@ exports.Login = async (req, res) => {
 
     if (password !== user.password) {
       return res.status(401).send({
-        accessToken: null,
+        auth: false,
         message: "Wrong password!",
       });
     }
