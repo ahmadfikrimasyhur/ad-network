@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const CampaignTable = () => {
-  const [data, setData] = useState([]);
+import { AuthenticationHeader } from "../../services/auth";
 
+const CampaignTable = () => {
+  const currUser = JSON.parse(localStorage.getItem("user"));
+
+  const [data, setData] = useState([]);
   const fetchCampaigns = async (e) => {
     try {
-      const response = await axios.get("http://localhost:3001/fetch");
+      const response = await axios.get(
+        `http://localhost:3001/campaign/${currUser.id}`,
+        {
+          headers: AuthenticationHeader(),
+        }
+      );
       console.log(response);
       setData(response.data);
     } catch (err) {
