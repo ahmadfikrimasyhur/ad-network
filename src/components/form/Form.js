@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Button from "./Button";
+
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { Login } from "../../services/auth";
+
 const Form = () => {
-  let history = useHistory();
+  const history = useHistory();
 
   const [data, setData] = useState({ email: "", password: "" });
 
@@ -17,7 +20,7 @@ const Form = () => {
     setData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
@@ -26,11 +29,13 @@ const Form = () => {
         ...prevState,
         email: "Empty e-mail!",
       }));
+      return;
     } else if (!data.email.includes("@")) {
       setErrors((prevState) => ({
         ...prevState,
         email: "Invalid e-mail!",
       }));
+      return;
     }
 
     if (!data.password) {
@@ -38,9 +43,20 @@ const Form = () => {
         ...prevState,
         password: "Empty password!",
       }));
+      return;
     }
 
-    /* history.push("/dashboard"); */
+    try {
+      const login = await Login(data.email, data.password);
+      console.log(login);
+      if (login.auth) {
+        history.push("/dashboard");
+      } else {
+        console.log(login.response.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -108,7 +124,7 @@ const Form = () => {
           </div>
         </div>
         <div className="flex space-x-2 mt-5">
-          <Button>Login</Button>
+          <Button type="submit">Login</Button>
           <Button inverted={true}>Sign up</Button>
         </div>
       </form>

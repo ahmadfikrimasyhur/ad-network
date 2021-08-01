@@ -5,6 +5,8 @@ import CountrySelect from "../form/CountrySelect";
 import CurrencySelect from "../form/CurrencySelect";
 import Button from "./../form/Button";
 
+import { AuthenticationHeader, GetUser } from "../../services/auth";
+
 import { faSignature, faGavel } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -20,7 +22,11 @@ const CreateCampaignForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/fetch", data);
+      const response = await axios.post(
+        "http://localhost:3001/campaign/create",
+        { ...data, id: GetUser().id },
+        { headers: AuthenticationHeader() }
+      );
       console.log(response);
       props.close();
     } catch (err) {
@@ -185,7 +191,7 @@ const CreateCampaignForm = (props) => {
               <input
                 type="number"
                 step="0.01"
-                name="bid"
+                name="cost"
                 className={`w-28 rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none  shadow-md pl-10 ${
                   errors.bid
                     ? "ring-1 ring-red-500 focus:ring-red-500"

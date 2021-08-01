@@ -6,7 +6,7 @@ var cors = require("cors");
 
 // routes
 const userRoute = require("./routes/user");
-const fetchRoute = require("./routes/fetch");
+const campaignRoute = require("./routes/campaign");
 const countryRoute = require("./routes/country");
 
 //init express
@@ -21,7 +21,7 @@ mongoose.connect(db.uri, {
 app.use(express.json());
 app.use(cors());
 app.use(userRoute);
-app.use(fetchRoute);
+app.use(campaignRoute);
 app.use(countryRoute);
 
 app.listen(3001, () => {
