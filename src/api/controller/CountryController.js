@@ -8,5 +8,3 @@ exports.GetCountryList = async (req, res) => {
 exports.GetCurrenciesList = async (req, res) => {
   return res.json(currencies);
 };
-
-//simulating a real query with async
