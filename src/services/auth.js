@@ -1,7 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
-
 const Register = async (email, password) => {
   try {
     const response = await axios.post("/signup", {

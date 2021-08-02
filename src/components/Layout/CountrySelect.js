@@ -8,7 +8,7 @@ const CountrySelect = (props) => {
   const fetchCountries = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3001/countries");
+      const response = await axios.get("/countries");
       setCountries(response.data);
       setLoading(false);
     } catch (err) {

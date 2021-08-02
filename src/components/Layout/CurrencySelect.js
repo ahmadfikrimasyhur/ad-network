@@ -8,7 +8,7 @@ const CurrencySelect = (props) => {
   const fetchCurrencies = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3001/currencies");
+      const response = await axios.get("/currencies");
       setCurrencies(response.data);
       setLoading(false);
     } catch (err) {
