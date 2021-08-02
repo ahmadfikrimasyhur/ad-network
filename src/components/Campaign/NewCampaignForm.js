@@ -28,6 +28,7 @@ const CreateCampaignForm = (props) => {
         { headers: AuthenticationHeader() }
       );
       console.log(response);
+      props.fetchCampaign();
       props.close();
     } catch (err) {
       console.log(err);

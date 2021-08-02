@@ -2,11 +2,48 @@ import { useState, useEffect } from "react";
 import CampaignCreationModal from "../Campaign/CampaignCreationModal";
 import Button from "../form/Button.js";
 import CampaignTable from "../Campaign/CampaignTable";
-import { Transition, Dialog } from "@headlessui/react";
-import { Logout } from "../../services/auth";
+import { Logout, AuthenticationHeader } from "../../services/auth";
+import axios from "axios";
 
 const Dashboard = () => {
+  const currUser = JSON.parse(localStorage.getItem("user"));
+
   const [isCreating, setIsCreating] = useState(false);
+  const [list, setList] = useState([]);
+
+  const fetchCampaign = async () => {
+    try {
+      setList([]);
+      const response = await axios.get(
+        `http://localhost:3001/campaign/${currUser.id}`,
+        {
+          headers: AuthenticationHeader(),
+        }
+      );
+      setList(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteCampaign = async (id) => {
+    try {
+      const response = await axios.delete("/campaign/delete/", {
+        data: { id: id },
+        headers: AuthenticationHeader(),
+      });
+
+      if (response) {
+        fetchCampaign();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCampaign();
+  }, []);
 
   const openCampaignForm = () => {
     setIsCreating(true);
@@ -32,9 +69,14 @@ const Dashboard = () => {
           <CampaignCreationModal
             show={isCreating}
             onClose={closeCampaignForm}
+            fetchCampaign={fetchCampaign}
           />
           <div>
-            <CampaignTable />
+            <CampaignTable
+              list={list}
+              deleteCampaign={deleteCampaign}
+              fetchCampaign={fetchCampaign}
+            />
           </div>
         </div>
       </div>

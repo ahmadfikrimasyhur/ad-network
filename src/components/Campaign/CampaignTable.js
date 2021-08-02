@@ -3,32 +3,10 @@ import axios from "axios";
 
 import { AuthenticationHeader } from "../../services/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../form/Button";
 
-const CampaignTable = () => {
-  const currUser = JSON.parse(localStorage.getItem("user"));
-
-  const [data, setData] = useState([]);
-  const fetchCampaigns = async (e) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/campaign/${currUser.id}`,
-        {
-          headers: AuthenticationHeader(),
-        }
-      );
-      console.log(response);
-      setData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchCampaigns();
-  }, []);
-
+const CampaignTable = (props) => {
   return (
     <table className="table-fixed shadow-lg bg-gray-50 w-full text-gray-800">
       <thead>
@@ -49,8 +27,8 @@ const CampaignTable = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((campaign) => (
-          <tr>
+        {props.list.map((campaign) => (
+          <tr key={campaign._id}>
             <td className="border px-8 py-3">{campaign.name}</td>
             <td className="border px-8 py-3">
               {campaign.bid[0].cost} {campaign.bid[0].currency}
@@ -67,9 +45,16 @@ const CampaignTable = () => {
                 `World-wide`
               )}
             </td>
-            <td className="border px-8 py-3">
+            <td className="border px-8 py-3 space-x-2">
               <Button>
                 <FontAwesomeIcon icon={faPen} />
+              </Button>
+              <Button
+                onClick={() => {
+                  props.deleteCampaign(campaign._id);
+                }}
+              >
+                <FontAwesomeIcon icon={faTrash} />
               </Button>
             </td>
           </tr>
