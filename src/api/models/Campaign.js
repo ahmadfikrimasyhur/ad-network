@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const CampaignSchema = new mongoose.Schema(
   {
     country: {
-      type: String, // not required as i may not have an specific targeting (possibly a world-wide campaign?)
+      type: String,
+      required: true,
     },
     name: {
       type: String,
