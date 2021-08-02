@@ -37,13 +37,13 @@ exports.Login = async (req, res) => {
 exports.Signup = async (req, res) => {
   const data = await User.create(req.body);
 
-  return res.json(data);
-};
-
-exports.GetUser = async (req, res) => {
-  const data = await User.find({});
-
-  return res.json(data);
+  if (data) {
+    return res.status(200).send(data);
+  } else {
+    return res
+      .status(400)
+      .send({ error: true, message: "Could not create user" });
+  }
 };
 
 exports.CheckEmail = async (req, res, next) => {
@@ -51,10 +51,18 @@ exports.CheckEmail = async (req, res, next) => {
     const email = await User.findOne({ email: req.body.email });
 
     if (email) {
-      return res.status(400).send({ message: "Email already exists!" });
+      return res
+        .status(400)
+        .send({ error: true, message: "Email already exists!" });
     }
   } catch (err) {
-    return res.status(500).send({ message: err });
+    return res.status(500).send({ error: true, message: err });
   }
   next();
+};
+
+exports.GetUser = async (req, res) => {
+  const data = await User.find({});
+
+  return res.json(data);
 };

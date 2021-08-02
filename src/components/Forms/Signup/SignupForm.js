@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 
 import Button from "../../Layout/Button";
-import { Login } from "../../../services/auth";
+import { Register } from "../../../services/auth";
 
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LoginForm = () => {
+const Signup = () => {
   const history = useHistory();
 
   const [data, setData] = useState({ email: "", password: "" });
@@ -45,14 +45,22 @@ const LoginForm = () => {
       return;
     }
 
+    if (data.password !== data.confirmpassword) {
+      setErrors((prevState) => ({
+        ...prevState,
+        confirmpassword: "Passwords must match!",
+      }));
+      return;
+    }
+
     try {
-      const login = await Login(data.email, data.password);
-      if (login.auth) {
-        history.push("/dashboard");
+      const register = await Register(data.email, data.password);
+      if (!register.response.data.error) {
+        history.push("/");
       } else {
         setErrors((prevState) => ({
           ...prevState,
-          validation: login.response.data.message,
+          validation: register.response.data.message,
         }));
       }
     } catch (err) {
@@ -103,13 +111,14 @@ const LoginForm = () => {
           <div className="control  space-y-2">
             <div
               className={`relative text-gray-400 ${
-                errors.password && "text-red-500"
+                errors.password || (errors.confirmpassword && "text-red-500")
               } focus-within:text-infleux-500`}
             >
               <FontAwesomeIcon className="absolute top-3 left-3" icon={faKey} />
               <input
                 className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-infleux-500 shadow-md pl-9 ${
-                  errors.password && "ring-1 ring-red-500"
+                  errors.password ||
+                  (errors.confirmpassword && "ring-1 ring-red-500")
                 }`}
                 type="password"
                 placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
@@ -124,11 +133,39 @@ const LoginForm = () => {
             )}
           </div>
         </div>
+        <div>
+          <label className="font-semibold text-gray-800">
+            Confirm Password
+          </label>
+          <div className="control  space-y-2">
+            <div
+              className={`relative text-gray-400 ${
+                errors.confirmpassword && "text-red-500"
+              } focus-within:text-infleux-500`}
+            >
+              <FontAwesomeIcon className="absolute top-3 left-3" icon={faKey} />
+              <input
+                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-infleux-500 shadow-md pl-9 ${
+                  errors.confirmpassword && "ring-1 ring-red-500"
+                }`}
+                type="password"
+                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                name="confirmpassword"
+              />
+            </div>
+            {errors.confirmpassword && (
+              <p className="text-red-500 text-xs">{errors.confirmpassword}</p>
+            )}
+          </div>
+        </div>
         <div className="flex space-x-2 mt-5">
-          <Button type="submit">Login</Button>
-          <Link to="/signup">
+          <Button type="submit">Sign up</Button>
+          <Link to="/">
             <Button type="button" inverted={true}>
-              Sign up
+              Go back
             </Button>
           </Link>
         </div>
@@ -143,4 +180,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Signup;

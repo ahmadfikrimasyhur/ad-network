@@ -11,7 +11,7 @@ const Register = async (email, password) => {
 
     return response.data;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 
