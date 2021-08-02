@@ -69,7 +69,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5">
+    <div className="flex-1 p-5 w-80	md:w-96 shadow-2xl bg-gray-50 rounded-md space-y-5">
       <form
         onSubmit={(e) => {
           handleSubmit(e);
