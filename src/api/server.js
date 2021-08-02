@@ -18,6 +18,10 @@ mongoose.connect(db.uri, {
   useUnifiedTopology: true,
 });
 
+app.use(function (req, res, next) {
+  setTimeout(next, 500);
+}); //DELAY FOR TESTING
+
 app.use(express.json());
 app.use(cors());
 app.use(userRoute);
