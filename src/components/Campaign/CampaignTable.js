@@ -9,19 +9,19 @@ const CampaignTable = (props) => {
         <table className="table-fixed shadow-lg bg-gray-50 w-full text-gray-800">
           <thead>
             <tr>
-              <th className="w-3/6 bg-blue-200 border text-left px-8 py-2">
+              <th className="w-3/6 bg-infleux-200 border text-left px-8 py-2">
                 Campaign Name
               </th>
-              <th className="w-1/8 bg-blue-200 border text-left px-8 py-2">
+              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-2">
                 Bid
               </th>
-              <th className="w-1/8 bg-blue-200 border text-center px-8 py-2">
+              <th className="w-1/8 bg-infleux-200 border text-center px-8 py-2">
                 Conversion Type
               </th>
-              <th className="w-1/8 bg-blue-200 border text-left px-8 py-4">
+              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-4">
                 Targeting
               </th>
-              <th className="w-1/8 bg-blue-200 border text-left px-8 py-4">
+              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-4">
                 Actions
               </th>
             </tr>

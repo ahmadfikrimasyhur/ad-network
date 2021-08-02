@@ -2,7 +2,7 @@ import Form from "../form/Form";
 
 const Home = () => {
   return (
-    <section className="w-full bg-blue-500">
+    <section className="w-full bg-gradient-to-r from-infleux-400 to-infleux-600">
       <div className="container mx-auto flex justify-center	align-center items-center flex-col h-screen">
         <div className="flex flex-col justify-center space-y-5">
           <h1 className="text-3xl font-bold text-white drop-shadow-sm	">

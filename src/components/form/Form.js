@@ -76,14 +76,14 @@ const Form = () => {
             <div
               className={`relative text-gray-400 ${
                 errors.email && "text-red-500"
-              } focus-within:text-blue-500`}
+              } focus-within:text-infleux-500`}
             >
               <FontAwesomeIcon
                 className="absolute top-3 left-3"
                 icon={faEnvelope}
               />
               <input
-                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md pl-9 ${
+                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-infleux-500 shadow-md pl-9 ${
                   errors.email && "ring-1 ring-red-500"
                 }`}
                 placeholder="mymail@mail.com"
@@ -106,11 +106,11 @@ const Form = () => {
             <div
               className={`relative text-gray-400 ${
                 errors.password && "text-red-500"
-              } focus-within:text-blue-500`}
+              } focus-within:text-infleux-500`}
             >
               <FontAwesomeIcon className="absolute top-3 left-3" icon={faKey} />
               <input
-                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md pl-9 ${
+                className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-infleux-500 shadow-md pl-9 ${
                   errors.password && "ring-1 ring-red-500"
                 }`}
                 type="password"
