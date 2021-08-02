@@ -52,7 +52,7 @@ const LoginForm = () => {
       } else {
         setErrors((prevState) => ({
           ...prevState,
-          validation: login.response.data.message,
+          validation: login.response.message,
         }));
       }
     } catch (err) {
@@ -61,7 +61,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5">
+    <div className="flex-1 p-5 w-80	md:w-96 shadow-2xl bg-gray-50 rounded-md space-y-5">
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -125,9 +125,11 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="flex space-x-2 mt-5">
-          <Button type="submit">Login</Button>
+          <Button type="submit" className="text-lg px-3 py-2">
+            Login
+          </Button>
           <Link to="/signup">
-            <Button type="button" inverted={true}>
+            <Button type="button" className="text-lg px-3 py-2" inverted={true}>
               Sign up
             </Button>
           </Link>

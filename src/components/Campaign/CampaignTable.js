@@ -6,46 +6,46 @@ const CampaignTable = (props) => {
   return (
     <div>
       {props.list ? (
-        <table className="table-fixed shadow-lg bg-gray-50 w-full text-gray-800">
+        <table className="table-fixed shadow-lg bg-gray-50 w-full text-white">
           <thead>
-            <tr>
-              <th className="w-3/6 bg-infleux-200 border text-left px-8 py-2">
+            <tr className="text-xs md:text-base">
+              <th className="w-3/12 bg-infleux-200 border text-left px-3 md:px-8 md:py-2 md:w-3/6">
                 Campaign Name
               </th>
-              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-2">
+              <th className="w-2/12 md:w-1/8 bg-infleux-200 border text-center py-2">
                 Bid
               </th>
-              <th className="w-1/8 bg-infleux-200 border text-center px-8 py-2">
+              <th className="w-3/12 md:w-1/8 bg-infleux-200 border text-center py-2">
                 Conversion Type
               </th>
-              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-4">
-                Targeting
+              <th className="w-2/12 md:w-1/8 bg-infleux-200 border text-center py-4">
+                Target
               </th>
-              <th className="w-1/8 bg-infleux-200 border text-left px-8 py-4">
+              <th className="w-2/12 md:w-1/8 bg-infleux-200 border text-center py-4">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-xs md:text-base text-gray-800">
             {props.list.map((campaign) => (
               <tr key={campaign._id}>
-                <td className="border px-8 py-3">{campaign.name}</td>
-                <td className="border px-8 py-3">
+                <td className="border px-3 py-1 md:px-8 md:py-3">
+                  {campaign.name}
+                </td>
+                <td className="border text-center px-3 py-1 md:px-8 md:py-3">
                   {campaign.bid[0].cost} {campaign.bid[0].currency}
                 </td>
-                <td className="border px-8 py-3">{campaign.conversion}</td>
-                <td className="border px-8 py-3">
-                  {campaign.country ? (
-                    <img
-                      alt={`${campaign.country} flag`}
-                      src={`https://www.countryflags.io/${campaign.country}/flat/24.png`}
-                      className="rounded-md"
-                    />
-                  ) : (
-                    `World-wide`
-                  )}
+                <td className="border text-center px-3 py-1 md:px-8 md:py-3">
+                  {campaign.conversion}
                 </td>
-                <td className="border px-8 py-3 space-x-2">
+                <td className="border text-center px-3 py-1 md:px-8 md:py-3">
+                  <img
+                    alt={`${campaign.country} flag`}
+                    src={`https://www.countryflags.io/${campaign.country}/flat/24.png`}
+                    className="rounded-md text-center"
+                  />
+                </td>
+                <td className="border px-3 py-1 md:px-8 md:py-3 space-y-2">
                   <Button>
                     <FontAwesomeIcon icon={faPen} />
                   </Button>
@@ -68,10 +68,10 @@ const CampaignTable = (props) => {
             className="text-center"
             size={"3x"}
           />
-          <p className="font-bold text-2xl text-gray-800">
+          <p className="font-bold text-center text-2xl text-gray-800">
             Oh no! You do not have campaigns. Add one!
           </p>
-          <Button onClick={props.onClick} className="text-xl">
+          <Button onClick={props.onClick} className="text-lg md:text-2xl">
             Create my first Campaign
           </Button>
         </div>

@@ -69,7 +69,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex-1 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5">
+    <div className="flex-1 p-5 w-80	md:w-96 shadow-2xl bg-gray-50 rounded-md space-y-5">
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -162,9 +162,11 @@ const Signup = () => {
           </div>
         </div>
         <div className="flex space-x-2 mt-5">
-          <Button type="submit">Sign up</Button>
+          <Button type="submit" className="text-lg px-3 py-2">
+            Sign up
+          </Button>
           <Link to="/">
-            <Button type="button" inverted={true}>
+            <Button type="button" inverted={true} className="text-lg px-3 py-2">
               Go back
             </Button>
           </Link>
