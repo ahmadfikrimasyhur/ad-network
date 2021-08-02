@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Button from "../../Layout/Button";
 import { Login } from "../../../services/auth";
@@ -7,7 +7,7 @@ import { Login } from "../../../services/auth";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Form = () => {
+const LoginForm = () => {
   const history = useHistory();
 
   const [data, setData] = useState({ email: "", password: "" });
@@ -47,7 +47,6 @@ const Form = () => {
 
     try {
       const login = await Login(data.email, data.password);
-      console.log(login);
       if (login.auth) {
         history.push("/dashboard");
       } else {
@@ -127,9 +126,11 @@ const Form = () => {
         </div>
         <div className="flex space-x-2 mt-5">
           <Button type="submit">Login</Button>
-          <Button type="button" inverted={true}>
-            Sign up
-          </Button>
+          <Link to="/signup">
+            <Button type="button" inverted={true}>
+              Sign up
+            </Button>
+          </Link>
         </div>
       </form>
 
@@ -142,4 +143,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default LoginForm;
