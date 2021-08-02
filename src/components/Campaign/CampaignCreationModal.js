@@ -47,7 +47,10 @@ const CampaignCreationModal = (props) => {
                 Create Campaign
               </Dialog.Title>
               <div className="mt-2">
-                <NewCampaignForm close={props.onClose} />
+                <NewCampaignForm
+                  close={props.onClose}
+                  fetchCampaign={props.fetchCampaign}
+                />
               </div>
             </div>
           </Transition.Child>
