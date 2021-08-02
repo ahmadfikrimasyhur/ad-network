@@ -37,7 +37,7 @@ exports.GetUserCampaigns = async (req, res) => {
 
 exports.GetBestCampaign = async (req, res) => {
   const country = req.params.country.toUpperCase();
-  const data = await Campaign.find({ country: country || "" })
+  const data = await Campaign.find({ country: country })
     .sort("-bid.cost")
     .limit(1);
 
