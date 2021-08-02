@@ -128,7 +128,9 @@ const Form = () => {
         </div>
         <div className="flex space-x-2 mt-5">
           <Button type="submit">Login</Button>
-          <Button inverted={true}>Sign up</Button>
+          <Button type="button" inverted={true}>
+            Sign up
+          </Button>
         </div>
       </form>
 
