@@ -125,9 +125,11 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="flex space-x-2 mt-5">
-          <Button type="submit">Login</Button>
+          <Button type="submit" className="text-lg px-3 py-2">
+            Login
+          </Button>
           <Link to="/signup">
-            <Button type="button" inverted={true}>
+            <Button type="button" className="text-lg px-3 py-2" inverted={true}>
               Sign up
             </Button>
           </Link>

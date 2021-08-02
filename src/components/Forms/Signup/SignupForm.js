@@ -162,9 +162,11 @@ const Signup = () => {
           </div>
         </div>
         <div className="flex space-x-2 mt-5">
-          <Button type="submit">Sign up</Button>
+          <Button type="submit" className="text-lg px-3 py-2">
+            Sign up
+          </Button>
           <Link to="/">
-            <Button type="button" inverted={true}>
+            <Button type="button" inverted={true} className="text-lg px-3 py-2">
               Go back
             </Button>
           </Link>

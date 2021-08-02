@@ -23,7 +23,7 @@ const CreateCampaignForm = (props) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/campaign/create",
+        "/campaign/create",
         { ...data, id: GetUser().id },
         { headers: AuthenticationHeader() }
       );
@@ -254,7 +254,9 @@ const CreateCampaignForm = (props) => {
         </div>
 
         <div className="flex space-x-2">
-          <Button type="submit">Create</Button>
+          <Button type="submit" className="text-lg">
+            Create
+          </Button>
         </div>
       </form>
     </div>

@@ -64,10 +64,12 @@ const Dashboard = () => {
   return (
     <section className="w-full h-screen bg-gradient-to-r from-infleux-400 to-infleux-600 ">
       <div className="container mx-auto flex justify-center	align-center items-center flex-col p-5 ">
-        <div className="flex-1 m-10 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5 min-w-full	">
-          <div className="flex justify-between">
-            <h1 className="font-bold text-3xl text-gray-800">Dashboard</h1>
-            <div className="space-x-2">
+        <div className="flex-1 md:m-10 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5 min-w-full	">
+          <div className="flex justify-between items-center space-x-2">
+            <h1 className="font-bold text-2xl md:text-3xl text-gray-800">
+              Dashboard
+            </h1>
+            <div className="flex space-x-2">
               <Button onClick={openCampaignForm} disabled={isCreating}>
                 Create Campaign
               </Button>
