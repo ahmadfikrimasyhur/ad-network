@@ -1,4 +1,4 @@
-import Form from "../form/Form";
+import LoginForm from "../Forms/Login/LoginForm";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
           <p className="text-xl text-white text-center">
             Please, login or signup.
           </p>
-          <Form />
+          <LoginForm />
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import CampaignCreationModal from "../Campaign/CampaignCreationModal";
-import Button from "../form/Button.js";
+import Button from "../Layout/Button.js";
 import CampaignTable from "../Campaign/CampaignTable";
 import axios from "axios";
 

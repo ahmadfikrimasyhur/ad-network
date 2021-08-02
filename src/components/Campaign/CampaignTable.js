@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash, faQuestion } from "@fortawesome/free-solid-svg-icons";
-import Button from "../form/Button";
+import Button from "../Layout/Button";
 
 const CampaignTable = (props) => {
   return (

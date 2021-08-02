@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
-import CountrySelect from "../form/CountrySelect";
-import CurrencySelect from "../form/CurrencySelect";
-import Button from "./../form/Button";
+import CountrySelect from "../Layout/CountrySelect";
+import CurrencySelect from "../Layout/CurrencySelect";
+import Button from "./../Layout/Button";
 
 import { AuthenticationHeader, GetUser } from "../../services/auth";
 
