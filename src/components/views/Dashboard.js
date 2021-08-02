@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import CampaignCreationModal from "../Campaign/CampaignCreationModal";
 import Button from "../form/Button.js";
 import CampaignTable from "../Campaign/CampaignTable";
-import { Logout, AuthenticationHeader } from "../../services/auth";
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+
+import { Logout, AuthenticationHeader } from "../../services/auth";
 
 const Dashboard = () => {
   const currUser = JSON.parse(localStorage.getItem("user"));
@@ -14,6 +16,8 @@ const Dashboard = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [list, setList] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
 
   const fetchCampaign = async () => {
     try {
@@ -69,7 +73,14 @@ const Dashboard = () => {
               <Button onClick={openCampaignForm} disabled={isCreating}>
                 Create Campaign
               </Button>
-              <Button onClick={Logout}>Logout</Button>
+              <Button
+                onClick={() => {
+                  Logout();
+                  history.push("/");
+                }}
+              >
+                Logout
+              </Button>
             </div>
           </div>
           <CampaignCreationModal
