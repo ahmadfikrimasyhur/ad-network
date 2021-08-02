@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import Button from "./Button";
+import Button from "../../Layout/Button";
+import { Login } from "../../../services/auth";
 
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { Login } from "../../services/auth";
 
 const Form = () => {
   const history = useHistory();
