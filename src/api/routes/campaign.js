@@ -10,11 +10,15 @@ routes.get(
   [CampaignController.CheckToken],
   CampaignController.GetUserCampaigns
 );
-
 routes.post(
   "/campaign/create",
   [CampaignController.CheckToken],
   CampaignController.CreateCampaign
+);
+routes.delete(
+  "/campaign/delete",
+  [CampaignController.CheckToken],
+  CampaignController.DeleteCampaign
 );
 
 module.exports = routes;

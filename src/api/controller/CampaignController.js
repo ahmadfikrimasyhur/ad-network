@@ -60,3 +60,13 @@ exports.CreateCampaign = async (req, res) => {
     return res.status(400).json(err);
   }
 };
+
+exports.DeleteCampaign = async (req, res) => {
+  try {
+    const data = await Campaign.findByIdAndDelete(req.body.id);
+    return res.status(200).json(data);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+  }
+};
