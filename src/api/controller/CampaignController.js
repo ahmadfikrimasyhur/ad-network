@@ -28,8 +28,12 @@ exports.GetUserCampaigns = async (req, res) => {
   const _id = req.params.id;
   const data = await Campaign.find({ owner: _id });
 
-  return res.json(data);
-}; //TEST ROUTE
+  if (data.length > 0) {
+    return res.json(data);
+  } else {
+    return res.json("");
+  }
+};
 
 exports.GetBestCampaign = async (req, res) => {
   const country = req.params.country.toUpperCase();
