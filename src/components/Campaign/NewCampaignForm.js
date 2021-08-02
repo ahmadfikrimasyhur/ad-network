@@ -110,7 +110,7 @@ const CreateCampaignForm = (props) => {
             <div
               className={`relative text-gray-400 ${
                 errors.name && "text-red-500"
-              } focus-within:text-blue-500`}
+              } focus-within:text-infleux-500`}
             >
               <FontAwesomeIcon
                 className={`absolute top-3 left-3 ${
@@ -124,7 +124,7 @@ const CreateCampaignForm = (props) => {
                 className={`w-full rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none shadow-md pl-10 ${
                   errors.name
                     ? "ring-1 ring-red-500 focus:ring-red-500"
-                    : "focus:ring-1 focus:ring-blue-500"
+                    : "focus:ring-1 focus:ring-infleux-500"
                 }`}
                 placeholder="Your campaign name"
                 onChange={(e) => {
@@ -154,10 +154,10 @@ const CreateCampaignForm = (props) => {
                 onBlur={(e) => {
                   validateInput(e);
                 }}
-                className={`w-full rounded-md border-0 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-blue-500 shadow-md ${
+                className={`w-full rounded-md border-0 ring-1 ring-gray-50 outline-none focus:ring-1 focus:ring-infleux-500 shadow-md ${
                   errors.conversion
                     ? "ring-1 ring-red-500 focus:ring-red-500 text-red-500"
-                    : "focus:ring-1 focus:ring-blue-500 text-gray-800 "
+                    : "focus:ring-1 focus:ring-infleux-500 text-gray-800 "
                 }`}
               >
                 <option disabled={true} value="default">
@@ -180,7 +180,7 @@ const CreateCampaignForm = (props) => {
             <div
               className={`relative text-gray-400 ${
                 errors.bid && "text-red-500"
-              } focus-within:text-blue-500`}
+              } focus-within:text-infleux-500`}
             >
               <FontAwesomeIcon
                 className={`absolute top-3 left-3 ${
@@ -196,7 +196,7 @@ const CreateCampaignForm = (props) => {
                 className={`w-28 rounded-md border-0 text-gray-800 ring-1 ring-gray-50 outline-none  shadow-md pl-10 ${
                   errors.bid
                     ? "ring-1 ring-red-500 focus:ring-red-500"
-                    : "focus:ring-1 focus:ring-blue-500"
+                    : "focus:ring-1 focus:ring-infleux-500"
                 }`}
                 placeholder="1.99"
                 onChange={(e) => {
@@ -218,7 +218,7 @@ const CreateCampaignForm = (props) => {
               className={`w-full rounded-md border-0 ring-1 ring-gray-50 outline-none focus:ring-1 shadow-md ${
                 errors.currency
                   ? "ring-1 ring-red-500 focus:ring-red-500 text-red-500"
-                  : "focus:ring-1 focus:ring-blue-500 text-gray-800 "
+                  : "focus:ring-1 focus:ring-infleux-500 text-gray-800 "
               }`}
               onChange={(e) => {
                 handleChange(e);
@@ -245,7 +245,7 @@ const CreateCampaignForm = (props) => {
             className={`w-full rounded-md border-0 ring-1 ring-gray-50 outline-none focus:ring-1 shadow-md ${
               errors.country
                 ? "ring-1 ring-red-500 focus:ring-red-500 text-red-500"
-                : "focus:ring-1 focus:ring-blue-500 text-gray-800 "
+                : "focus:ring-1 focus:ring-infleux-500 text-gray-800 "
             }`}
           />
           {errors.country && (

@@ -64,7 +64,7 @@ const Dashboard = () => {
   };
 
   return (
-    <section className="w-full h-screen bg-blue-500">
+    <section className="w-full h-screen bg-gradient-to-r from-infleux-400 to-infleux-600 ">
       <div className="container mx-auto flex justify-center	align-center items-center flex-col">
         <div className="flex-1 m-10 p-5 shadow-2xl bg-gray-50 rounded-md space-y-5 min-w-full	">
           <div className="flex justify-between">
