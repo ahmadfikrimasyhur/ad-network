@@ -1,70 +1,85 @@
+<p align="center">
+ <img src="https://ad-network.herokuapp.com/logo.png" width="128px" />
+
+</p>
+
 # Ad Network
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Fullstack app built with React Hooks, Tailwind CSS, NodeJS, Express and MongoDB (mongoose).
 
-## Available Scripts
 
-In the project directory, you can run:
+## DEMO
 
-### `yarn start`
+Access [ad-network demo](https://ad-network.herokuapp.com/). Create an account or log in with email: `admin@test.com` and password `admin`. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to install and run
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+There are few steps you need to follow in order to run this project.
 
-### `yarn test`
+### Create your MongoDB cluster
+Firstly, clone this repo. Then you need to [create an Mongo DB Atlas account](https://docs.atlas.mongodb.com/tutorial/create-atlas-account), [deploy a free cluster](https://docs.atlas.mongodb.com/tutorial/deploy-free-tier-cluster/) and [get your cluster connection string](https://docs.mongodb.com/drivers/node/current/quick-start/#connect-to-your-cluster). It should be in this format:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```mongodb://yourusername:yourpassword@yourhost:hostport/yourdbname```
 
-### `yarn build`
+Copy this **connection string**. We'll use it later. Access the `./.env.template` file. If everything is ok, you should see this inside it:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+DATABASEURI=mongodb://yourusername:yourpassword@yourhost:hostport/yourdatabasename
+SECRET=yourjwtsecret
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Change your `DATABASEURI` for your **cluster connection string**. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Change your `SECRET` variable to whenever you want, but do not reveal it for anyone, as this variable is used with JWT to authenticate users! Examples: `SECRET=cutekitty` or `SECRET=angryhamster`.
 
-### `yarn eject`
+**Do not forget** to rename `.env.template` to `.env`, as `./server.js` file needs to find it.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Install project dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now you have to run two set of commands:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```zsh
+$ cd ad-network
+$ yarn
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```zsh
+$ cd ad-network/client/
+$ yarn
+```
 
-## Learn More
+### Run the project!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Now, all you have to do is run these:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```zsh
+$ cd ad-network
+$ nodemon server.js
+```
 
-### Code Splitting
+```
+[nodemon] starting `node server.js`
+Server is running on port3001
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+After running server.js, it's time to run the React app: 
+```zsh
+$ cd ad-network/client
+$ yarn start
+```
 
-### Analyzing the Bundle Size
+```Starting the development server...
+...
+Compiled successfully!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+You can now view ad-network in the browser.
 
-### Making a Progressive Web App
+  Local:            http://localhost:3000
+...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+```
 
-### Advanced Configuration
+Access [http://localhost:3000](http://localhost:3000) and have fun!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
