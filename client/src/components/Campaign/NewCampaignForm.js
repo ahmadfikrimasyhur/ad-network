@@ -27,7 +27,6 @@ const CreateCampaignForm = (props) => {
         { ...data, id: GetUser().id },
         { headers: AuthenticationHeader() }
       );
-      console.log(response);
       props.fetchCampaign();
       props.close();
     } catch (err) {
