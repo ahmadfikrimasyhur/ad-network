@@ -2,7 +2,6 @@ const CampaignController = require("../controller/CampaignController");
 const express = require("express");
 const routes = express.Router();
 
-routes.get("/fetch", CampaignController.GetCampaigns);
 routes.get("/fetch/:country", CampaignController.GetBestCampaign);
 
 routes.get(
