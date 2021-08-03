@@ -52,7 +52,7 @@ const LoginForm = () => {
       } else {
         setErrors((prevState) => ({
           ...prevState,
-          validation: login.response.message,
+          validation: login.response.data.message,
         }));
       }
     } catch (err) {

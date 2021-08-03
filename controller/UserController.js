@@ -22,7 +22,7 @@ exports.Login = async (req, res) => {
       expiresIn: 86400,
     });
 
-    res.status(200).send({
+    return res.status(200).send({
       auth: true,
       id: user._id,
       username: user.username,
@@ -30,7 +30,7 @@ exports.Login = async (req, res) => {
       accessToken: token,
     });
   } catch (err) {
-    return res.status(401).send({ auth: false, error: err });
+    return res.status(401).send({ auth: false, message: err });
   }
 };
 
