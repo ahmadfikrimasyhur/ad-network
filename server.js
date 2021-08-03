@@ -22,18 +22,17 @@ mongoose.connect(db.uri, {
   useUnifiedTopology: true,
 });
 
-app.use(function (req, res, next) {
-  setTimeout(next, 500);
-}); //DELAY FOR TESTING
-
 app.use(express.json());
-app.use(cors());
 app.use(userRoute);
 app.use(campaignRoute);
 app.use(countryRoute);
 
 if (process.env.NODE_ENV !== "production") {
   app.use(testRoutes);
+  app.use(function (req, res, next) {
+    setTimeout(next, 500);
+  }); //DELAY FOR TESTING
+  app.use(cors());
 }
 
 if (process.env.NODE_ENV === "production") {
