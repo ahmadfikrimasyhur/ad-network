@@ -1,15 +1,23 @@
 {
   "main": "server.js",
+  "version": "3.0.0",
+  "name": "ad-network-api",
+  "description": "Ad network API server",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.5"
+    "mongoose": "^5.13.5",
+    "path": "^0.12.7"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "build": "cd client && yarn && yarn build"
   },
   "engines": {
     "node": "12.18.2"

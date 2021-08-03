@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 var cors = require("cors");
 const path = require("path");
 
+const port = process.env.PORT || 3001;
+
 // routes
 const userRoute = require("./routes/user");
 const campaignRoute = require("./routes/campaign");
@@ -28,12 +30,13 @@ app.use(cors());
 app.use(userRoute);
 app.use(campaignRoute);
 app.use(countryRoute);
+
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(3002, () => {
+app.listen(port, () => {
   console.log("Server is running...");
 });
