@@ -42,20 +42,23 @@ const CampaignTable = (props) => {
                   <img
                     alt={`${campaign.country} flag`}
                     src={`https://www.countryflags.io/${campaign.country}/flat/24.png`}
-                    className="rounded-md text-center"
+                    className="rounded-md text-center mx-auto"
                   />
                 </td>
-                <td className="border px-3 py-1 md:px-8 md:py-3 space-y-2">
-                  <Button>
+                <td className="border px-3 py-1 md:px-8 md:py-3 space-y-2 md:px-auto">
+                  {/* <Button>
                     <FontAwesomeIcon icon={faPen} />
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      props.deleteCampaign(campaign._id);
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
+                  </Button> */}
+                  <div className="flex content-center justify-center items-center">
+                    <Button
+                      onClick={() => {
+                        props.deleteCampaign(campaign._id);
+                      }}
+                      className="text-center"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </Button>
+                  </div>
                 </td>
               </tr>
             ))}
