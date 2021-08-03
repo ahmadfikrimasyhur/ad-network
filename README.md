@@ -1,6 +1,5 @@
 <p align="center">
  <img src="https://ad-network.herokuapp.com/logo.png" width="128px" />
-
 </p>
 
 # Ad Network
@@ -83,3 +82,25 @@ To create a production build, use yarn build.
 
 Access [http://localhost:3000](http://localhost:3000) and have fun!
 
+### What if I want to deploy my project?
+
+I'll teach you to deploy it on [Heroku](https://www.heroku.com/). All you have to do is install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and run `$ heroku login`. Authenticate as it is requested and access the project root folder with `cd ad-network`. Now run 
+```zsh
+$ heroku create
+$ git push heroku master
+```
+
+and it is done! Open your deployed app.
+
+
+## Database structure
+
+If you want to edit this project you may have to know on how [mongoose](https://mongoosejs.com/docs/) deals with your app database. It is a simple database which has a one-to-many relation between one user and many campaigns.
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/16800059/128025863-28419918-0bf4-4579-a92e-2945587bfaa6.png" />
+</p>
+
+You may change database models at `./models/`. 
+
+#### Thank you for reading this!
